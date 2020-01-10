@@ -1,0 +1,12 @@
+{
+  "name": "lunches",
+  "version": "0.1",
+  "description": "Just another lunch scrapper",
+  "main": "index.js",
+  "repository": "git@github.com:janneuman/lunches.git",
+  "author": "Jan Neuman <neuman.jan@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
