@@ -14,7 +14,7 @@ import {
 const app = express();
 const port = process.env.PORT || 3000;
 
-// app.use(express.static(path.join(__dirname, 'build')))
+app.use(express.static(path.join(__dirname, 'build')))
 
 // app.use(function(req, res, next) {
 //   res.header("Access-Control-Allow-Origin", "*");
@@ -22,35 +22,35 @@ const port = process.env.PORT || 3000;
 //   next();
 // });
 
-app.get('/ecko', async (req, res) => {
+app.get('/api/ecko', async (req, res) => {
   res.send(await getEckoKantyna());
 });
 
-app.get('/pivo-karlin', async (req, res) => {
+app.get('/api/pivo-karlin', async (req, res) => {
   res.send(await getPivoKarlin());
 });
 
-app.get('/salanda', async (req, res) => {
+app.get('/api/salanda', async (req, res) => {
   res.send(await getSalandaKarlin());
 });
 
-app.get('/gastro-karlin', async (req, res) => {
+app.get('/api/gastro-karlin', async (req, res) => {
   res.send(await getGastroKarlin());
 });
 
-app.get('/sklizeno-myfood', async (req, res) => {
+app.get('/api/sklizeno-myfood', async (req, res) => {
   res.send(await getSklizenoMyfood());
 });
 
-app.get('/spojka-karlin', async (req, res) => {
+app.get('/api/spojka-karlin', async (req, res) => {
   res.send(await getSpojkaKarlin());
 });
 
-app.get('/gate', async (req, res) => {
+app.get('/api/gate', async (req, res) => {
   res.send(await getGateKarlin());
 });
 
-app.get('/globus', async (req, res) => {
+app.get('/api/globus', async (req, res) => {
   res.send(await getGlobus());
 });
 

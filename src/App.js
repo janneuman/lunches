@@ -14,42 +14,42 @@ function App() {
   const [tabs, setTabs] = React.useState([
     {
       name: 'Kantyna Ecko',
-      url: '/ecko',
+      url: '/api/ecko',
       content: '',
     },
     {
       name: 'Pivo Karlin',
-      url: '/pivo-karlin',
+      url: '/api/pivo-karlin',
       content: '',
     },
     {
       name: 'Salanda',
-      url: '/salanda',
+      url: '/api/salanda',
       content: '',
     },
     {
       name: 'Gastro Karlin',
-      url: '/gastro-karlin',
+      url: '/api/gastro-karlin',
       content: '',
     },
     {
       name: 'Sklizeno My Food',
-      url: '/sklizeno-myfood',
+      url: '/api/sklizeno-myfood',
       content: '',
     },
     {
       name: 'Spojka Karlin',
-      url: '/spojka-karlin',
+      url: '/api/spojka-karlin',
       content: '',
     },
     {
       name: 'Gate',
-      url: '/gate',
+      url: '/api/gate',
       content: '',
     },
     {
       name: 'Globus',
-      url: '/globus',
+      url: '/api/globus',
       content: '',
     },
   ]);
