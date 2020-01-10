@@ -1,3 +1,4 @@
+import path from 'path';
 import express from 'express';
 import {
   getEckoKantyna,
@@ -10,6 +11,12 @@ import {
 
 const app = express();
 const port = 3000;
+
+app.use(express.static(path.join(__dirname, 'build')))
+
+app.get('/', function(req, res) {
+  res.sendFile(path.join(__dirname + '/build/index.html'));
+});
 
 app.get('/ecko', async (req, res) => {
   res.send(await getEckoKantyna());
