@@ -1,7 +1,2 @@
-import { getEckoKantyna } from "./eckoKantyna";
-import { getPivoKarlin } from "./pivoKarlin";
-
-export {
-  getEckoKantyna,
-  getPivoKarlin,
-}
+export { getEckoKantyna } from "./eckoKantyna";
+export { getPivoKarlin } from "./pivoKarlin";
