@@ -1,6 +1,6 @@
 import * as React from 'react';
 import './App.css';
-import { Pane, Tablist, Tab, Paragraph } from 'evergreen-ui';
+import { Pane, Tablist, Tab, Spinner } from 'evergreen-ui';
 import { useEffect } from 'react';
 
 const getMenu = async url => {
@@ -9,6 +9,7 @@ const getMenu = async url => {
 };
 
 function App() {
+  const [isLoading, setIsLoading] = React.useState(false);
   const [tabIndex, setTabIndex] = React.useState(0);
   const [tabs, setTabs] = React.useState([
     {
@@ -16,10 +17,46 @@ function App() {
       url: '/ecko',
       content: '',
     },
+    {
+      name: 'Pivo Karlin',
+      url: '/pivo-karlin',
+      content: '',
+    },
+    {
+      name: 'Salanda',
+      url: '/salanda',
+      content: '',
+    },
+    {
+      name: 'Gastro Karlin',
+      url: '/gastro-karlin',
+      content: '',
+    },
+    {
+      name: 'Sklizeno My Food',
+      url: '/sklizeno-myfood',
+      content: '',
+    },
+    {
+      name: 'Spojka Karlin',
+      url: '/spojka-karlin',
+      content: '',
+    },
+    {
+      name: 'Gate',
+      url: '/gate',
+      content: '',
+    },
+    {
+      name: 'Globus',
+      url: '/globus',
+      content: '',
+    },
   ]);
 
   useEffect(() => {
     async function fetchData() {
+      setIsLoading(true);
       const content = await getMenu(tabs[tabIndex].url);
 
       const newTabs = tabs.map((tab, index) => {
@@ -32,9 +69,11 @@ function App() {
         return tab;
       });
       setTabs(newTabs);
+      setIsLoading(false);
     }
-    fetchData();
-
+    if (tabs[tabIndex].content === '') {
+      fetchData();
+    }
   }, [tabIndex]);
 
   return (
@@ -64,7 +103,11 @@ function App() {
             aria-hidden={index !== tabIndex}
             display={index === tabIndex ? 'block' : 'none'}
           >
-            <div dangerouslySetInnerHTML={{__html: tab.content}} />
+            {isLoading ? (
+              <Spinner />
+            ) : (
+              <div dangerouslySetInnerHTML={{ __html: tab.content }} />
+            )}
           </Pane>
         ))}
       </Pane>
