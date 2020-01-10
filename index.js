@@ -7,6 +7,8 @@ import {
   getGastroKarlin,
   getSklizenoMyfood,
   getSpojkaKarlin,
+  getGateKarlin,
+  getGlobus,
 } from './restaurants';
 
 const app = express();
@@ -40,6 +42,14 @@ app.get('/sklizeno-myfood', async (req, res) => {
 
 app.get('/spojka-karlin', async (req, res) => {
   res.send(await getSpojkaKarlin());
+});
+
+app.get('/gate', async (req, res) => {
+  res.send(await getGateKarlin());
+});
+
+app.get('/globus', async (req, res) => {
+  res.send(await getGlobus());
 });
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));
