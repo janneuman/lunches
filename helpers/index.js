@@ -20,9 +20,13 @@ const options = {
   method: 'GET',
 };
 
-export const fetchData = async (url) => {
+export const fetchData = async (url, type) => {
   try {
     const response = await fetch(url, options);
+    if (type === 'json') {
+      return response.json();
+    }
+
     return response.text();
   } catch (error) {
     console.log(error);
