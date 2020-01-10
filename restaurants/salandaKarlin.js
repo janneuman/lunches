@@ -1,11 +1,11 @@
 import cheerio from 'cheerio';
 import { fetchData } from '../helpers/index';
 
-export const getEckoKantyna = async () => {
+export const getSalandaKarlin = async () => {
   const url =
-    'https://www.prague-catering.cz/provozovny/Kantyna-ECKO/Denni-menu-kantyny-ECKO/';
+    'https://www.restauracesalanda.cz/cs/salanda/karlin/#daily-meals';
   const data = await fetchData(url);
   return cheerio
-    .load(data)('.cely')
+    .load(data)('#daily-meals')
     .html();
 };
