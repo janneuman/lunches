@@ -1,16 +1,16 @@
 import http from 'http';
 import https from 'https';
-import fetch from "node-fetch";
+import fetch from 'node-fetch';
 
 const httpAgent = new http.Agent({
-  keepAlive: true
+  keepAlive: true,
 });
 const httpsAgent = new https.Agent({
-  keepAlive: true
+  keepAlive: true,
 });
 
 const options = {
-  agent: function (_parsedURL) {
+  agent: function(_parsedURL) {
     if (_parsedURL.protocol == 'http:') {
       return httpAgent;
     } else {
@@ -32,3 +32,5 @@ export const fetchData = async (url, type) => {
     console.log(error);
   }
 };
+
+export const menuNotFound = () => '<h3>Nic tady neni!</h3>';
