@@ -1,12 +1,6 @@
-import request from 'request';
-import cheerio from 'cheerio';
+import { getPivoKarlin } from './restaurants/pivoKarlin';
+import { getEckoKantyna } from './restaurants/eckoKantyna';
 
-export const test = (req, res) => {
-  request('https://www.pivokarlin.cz/', (error, response, body) => {
-    console.log('body', body);
-    const $ = cheerio.load(body);
-    
-    const html = $('#carousel-lunchmenu').html();
-    res.send(html);
-  });
+export const test = async (req, res) => {
+  res.send(getEckoKantyna())
 };
