@@ -1,3 +1,6 @@
 export { getEckoKantyna } from "./eckoKantyna";
 export { getPivoKarlin } from "./pivoKarlin";
-export { getSalandaKarlin } from "./salandaKarlin";
+export { getSpojkaKarlin } from './spojkaKarlin';
+export { getSalandaKarlin } from './salandaKarlin';
+export { getGastroKarlin } from './gastroKarlin';
+export { getSklizenoMyfood } from './sklizenoMyfood';
