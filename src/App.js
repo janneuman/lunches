@@ -4,7 +4,7 @@ import { Pane, Tablist, Tab, Spinner } from 'evergreen-ui';
 import { useEffect } from 'react';
 
 const getMenu = async url => {
-  const data = await fetch(`http://localhost:3000${url}`);
+  const data = await fetch(url);
   return await data.text();
 };
 
