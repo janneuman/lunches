@@ -6,4 +6,4 @@ require("babel-register")({
   }]],
 });
 
-module.exports = require("./index.js");
+module.exports = require("./backend/index.js");
