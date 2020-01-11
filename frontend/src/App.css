@@ -7,6 +7,88 @@
   margin: 30px;
 }
 
-.ecko .articleNav, .ecko #form, hr {
+.ecko {
+  width: 80%;
+  margin: auto;
+}
+
+.ecko .articleNav, .ecko #form, .ecko hr, .ecko h1 {
   display: none !important;
+}
+
+.ecko .dennimenu tr td:nth-child(2) {
+  width: 100px;
+  text-align: right;
+  font-weight: bold;
+}
+
+.pivokarlin {
+  width: 80%;
+  margin: auto;
+}
+
+.salanda {
+  width: 80%;
+  margin: auto;
+}
+
+.salanda table {
+  width: 100%;
+  margin-top: 30px;
+}
+
+.salanda table .price {
+  text-align: right;
+  font-weight: bold;
+}
+
+.gastro {
+  width: 80%;
+  margin: auto;
+}
+.gastro .et_pb_text_inner div span {
+  color: #656565 !important;
+  font-style: italic;
+}
+
+.sklizeno {
+  width: 80%;
+  margin: auto;
+}
+
+.spojka {
+  width: 80%;
+  margin: auto;
+}
+.spojka .menu-list__item {
+  display: flex;
+  align-items: center;
+}
+.spojka .menu-list__item h4>img {
+  height: 15px;
+  margin: 5px;
+}
+
+.gate {
+  width: 80%;
+  margin: auto;
+}
+
+.gate table {
+  width: 100%;
+}
+
+.gate table .cena {
+  font-weight: bold;
+}
+
+.globus {
+  width: 80%;
+  margin: auto;
+}
+
+.globus p {
+  text-align: left !important;
+  display: flex;
+  justify-content: space-between;
 }
