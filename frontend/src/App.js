@@ -16,41 +16,49 @@ function App() {
       name: 'Kantyna Ecko',
       url: '/api/ecko',
       content: '',
+      className: 'ecko',
     },
     {
       name: 'Pivo Karlin',
       url: '/api/pivo-karlin',
       content: '',
+      className: 'pivokarlin',
     },
     {
       name: 'Salanda',
       url: '/api/salanda',
       content: '',
+      className: 'salanda',
     },
     {
       name: 'Gastro Karlin',
       url: '/api/gastro-karlin',
       content: '',
+      className: 'gastro',
     },
     {
       name: 'Sklizeno My Food',
       url: '/api/sklizeno-myfood',
       content: '',
+      className: 'sklizeno',
     },
     {
       name: 'Spojka Karlin',
       url: '/api/spojka-karlin',
       content: '',
+      className: 'spojka',
     },
     {
       name: 'Gate',
       url: '/api/gate',
       content: '',
+      className: 'gate',
     },
     {
       name: 'Globus',
       url: '/api/globus',
       content: '',
+      className: 'globus',
     },
   ]);
 
@@ -88,6 +96,7 @@ function App() {
             }}
             isSelected={index === tabIndex}
             aria-controls={`panel-${tab.name}`}
+            height={35}
           >
             {tab.name}
           </Tab>
@@ -102,6 +111,7 @@ function App() {
             aria-labelledby={tab.name}
             aria-hidden={index !== tabIndex}
             display={index === tabIndex ? 'block' : 'none'}
+            className={tab.className}
           >
             {isLoading ? (
               <Spinner />
