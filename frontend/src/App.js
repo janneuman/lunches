@@ -77,8 +77,8 @@ function App() {
   }, [tabIndex]);
 
   return (
-    <Pane height={120}>
-      <Tablist marginBottom={16} flexBasis={240} marginRight={24}>
+    <Pane height={100} display="flex" flexDirection="column">
+      <Tablist className="tablist">
         {tabs.map((tab, index) => (
           <Tab
             key={tab.name}
