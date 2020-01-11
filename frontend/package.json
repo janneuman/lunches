@@ -7,9 +7,6 @@
   "author": "Jan Neuman <neuman.jan@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "@testing-library/jest-dom": "^4.2.4",
-    "@testing-library/react": "^9.3.2",
-    "@testing-library/user-event": "^7.1.2",
     "babel-preset-env": "^1.7.0",
     "babel-register": "^6.26.0",
     "evergreen-ui": "^4.21.5",
@@ -20,7 +17,6 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
