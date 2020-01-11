@@ -11,35 +11,40 @@
   width: 80%;
   margin: auto;
 }
-
 .ecko .articleNav, .ecko #form, .ecko hr, .ecko h1 {
   display: none !important;
 }
-
 .ecko .dennimenu tr td:nth-child(2) {
   width: 100px;
   text-align: right;
   font-weight: bold;
+}
+.ecko > div > h2 {
+  font-size: 20px;
 }
 
 .pivokarlin {
   width: 80%;
   margin: auto;
 }
+.pivokarlin .menu h2 {
+  font-size: 20px;
+}
 
 .salanda {
   width: 80%;
   margin: auto;
 }
-
 .salanda table {
   width: 100%;
   margin-top: 30px;
 }
-
 .salanda table .price {
   text-align: right;
   font-weight: bold;
+}
+.salanda h4.headline {
+  font-size: 20px;
 }
 
 .gastro {
@@ -49,6 +54,12 @@
 .gastro .et_pb_text_inner div span {
   color: #656565 !important;
   font-style: italic;
+}
+.gastro .et_pb_text_inner > h2 {
+  display: none;
+}
+.gastro .et_pb_text_inner > p > strong {
+  font-size: 20px;
 }
 
 .sklizeno {
@@ -63,10 +74,31 @@
 .spojka .menu-list__item {
   display: flex;
   align-items: center;
+  flex-flow: row wrap;
+}
+.spojka .menu-list__item > * {
+  flex: 1 100%;
 }
 .spojka .menu-list__item h4>img {
   height: 15px;
-  margin: 5px;
+  margin-top: 6px;
+  margin-left: 5px;
+}
+.spojka > div > h5 {
+  font-size: 20px;
+  margin: 0;
+}
+.spojka li.menu-list__item > div {
+}
+.spojka li.menu-list__item > h4 {
+  flex: 1 0 0;
+  margin-bottom: 0;
+}
+.spojka li.menu-list__item > span {
+  width: 70px;
+  flex: 1 0 0;
+  text-align: right;
+  font-weight: bold;
 }
 
 .gate {
@@ -80,6 +112,15 @@
 
 .gate table .cena {
   font-weight: bold;
+}
+
+.gate .menu-header {
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.gate .menu-header .week-btn {
+  display: none;
 }
 
 .globus {

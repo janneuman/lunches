@@ -4,6 +4,7 @@ import { fetchData, menuNotFound } from '../helpers/index';
 export const getGastroKarlin = async () => {
   const url = 'https://www.gastrokarlin.cz/';
   const data = await fetchData(url);
+  const day = cheerio.load(data)('#menu .et_pb_text_align_center').html();
   const html = cheerio
     .load(data)('#menu .et_pb_row_fullwidth')
     .html();
@@ -11,5 +12,6 @@ export const getGastroKarlin = async () => {
   if (!html) {
     return menuNotFound();
   }
-  return html;
+
+  return day ? day+html : html;
 };
