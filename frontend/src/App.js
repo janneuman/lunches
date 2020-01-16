@@ -1,11 +1,16 @@
 import * as React from 'react';
 import './App.css';
 import { Pane, Tablist, Tab, Spinner } from 'evergreen-ui';
+import { StructuralMenu } from './StructuralMenu';
 import { useEffect } from 'react';
 
-const getMenu = async url => {
-  const data = await fetch(url);
-  return await data.text();
+const getMenu = async restaurant => {
+  const data = await fetch(restaurant.url);
+  if (restaurant.json) {
+    return await data.json();
+  } else {
+    return await data.text();
+  }
 };
 
 function App() {
@@ -60,12 +65,19 @@ function App() {
       content: '',
       className: 'globus',
     },
+    {
+      name: 'Tankovna',
+      url: '/api/tankovna',
+      content: '',
+      className: 'tankovna',
+      json: true,
+    },
   ]);
 
   useEffect(() => {
     async function fetchData() {
       setIsLoading(true);
-      const content = await getMenu(tabs[tabIndex].url);
+      const content = await getMenu(tabs[tabIndex]);
 
       const newTabs = tabs.map((tab, index) => {
         if (index === tabIndex) {
@@ -82,7 +94,7 @@ function App() {
     if (tabs[tabIndex].content === '') {
       fetchData();
     }
-  }, [tabIndex]);
+  }, [tabs, tabIndex]);
 
   return (
     <Pane height={100} display="flex" flexDirection="column">
@@ -115,6 +127,8 @@ function App() {
           >
             {isLoading ? (
               <Spinner />
+            ) : tab.json !== undefined ? (
+              <StructuralMenu menu={tab.content} />
             ) : (
               <div dangerouslySetInnerHTML={{ __html: tab.content }} />
             )}

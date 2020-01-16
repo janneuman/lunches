@@ -1,6 +1,7 @@
 import http from 'http';
 import https from 'https';
 import fetch from 'node-fetch';
+import config from "../config";
 
 const httpAgent = new http.Agent({
   keepAlive: true,
@@ -31,6 +32,59 @@ export const fetchData = async (url, type) => {
   } catch (error) {
     console.log(error);
   }
+};
+
+export const fetchZomatoDailyMenu = async (resId) => {
+  const url = `${config.zomatoApiUrl}/dailymenu?res_id=${resId}`;
+  try {
+    const response = await fetch(url, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        'user_key': config.zomatoApiKey,
+      },
+    });
+    return response.json();
+
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const fetchZomatoRestaurantInfo = async (name) => {
+  const encodedName = encodeURI(name);
+  const url = `${config.zomatoApiUrl}/search?q=${encodedName}`;
+  try {
+    const response = await fetch(url, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        'user_key': config.zomatoApiKey,
+      },
+    });
+    return response.json();
+
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const getZomatoDailyMenuList = dailyMenus => {
+  const today = new Date(Date.now()).getDate();
+  const finalMenu = [];
+
+  dailyMenus.forEach(oneDayMenu => {
+    const menu = oneDayMenu.daily_menu;
+    const menuStartDay = new Date(menu.start_date).getDate();
+
+    if (menuStartDay === today) {
+      return menu.dishes.map(dish => finalMenu.push({
+        name: dish.dish.name,
+        price: dish.dish.price,
+      }));
+    }
+  });
+  return finalMenu;
 };
 
 export const menuNotFound = () => '<h3>Nic tady neni!</h3>';

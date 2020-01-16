@@ -6,3 +6,4 @@ export { getGastroKarlin } from './gastroKarlin';
 export { getSklizenoMyfood } from './sklizenoMyfood';
 export { getGateKarlin } from './gateKarlin';
 export { getGlobus } from './globus';
+export { getTankovnaKarlin } from './tankovnaKarlin';
