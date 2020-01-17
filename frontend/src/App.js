@@ -1,11 +1,17 @@
 import * as React from 'react';
 import './App.css';
-import { Pane, Tablist, Tab, Spinner } from 'evergreen-ui';
+import { Pane, Tablist, Tab } from 'evergreen-ui';
+import { Content } from './Content';
+
 import { useEffect } from 'react';
 
-const getMenu = async url => {
-  const data = await fetch(url);
-  return await data.text();
+const getMenu = async restaurant => {
+  const data = await fetch(restaurant.url);
+  if (restaurant.json) {
+    return await data.json();
+  } else {
+    return await data.text();
+  }
 };
 
 function App() {
@@ -60,12 +66,19 @@ function App() {
       content: '',
       className: 'globus',
     },
+    {
+      name: 'Tankovna',
+      url: '/api/tankovna',
+      content: '',
+      className: 'tankovna',
+      json: true,
+    },
   ]);
 
   useEffect(() => {
     async function fetchData() {
       setIsLoading(true);
-      const content = await getMenu(tabs[tabIndex].url);
+      const content = await getMenu(tabs[tabIndex]);
 
       const newTabs = tabs.map((tab, index) => {
         if (index === tabIndex) {
@@ -82,10 +95,10 @@ function App() {
     if (tabs[tabIndex].content === '') {
       fetchData();
     }
-  }, [tabIndex]);
+  }, [tabs, tabIndex]);
 
   return (
-    <Pane height={100} display="flex" flexDirection="column">
+    <Pane display="flex" flexDirection="column">
       <Tablist className="tablist">
         {tabs.map((tab, index) => (
           <Tab
@@ -113,11 +126,11 @@ function App() {
             display={index === tabIndex ? 'block' : 'none'}
             className={tab.className}
           >
-            {isLoading ? (
-              <Spinner />
-            ) : (
-              <div dangerouslySetInnerHTML={{ __html: tab.content }} />
-            )}
+            <Content
+              content={tab.content}
+              isLoading={isLoading}
+              isJsonFormat={tab.json}
+            />
           </Pane>
         ))}
       </Pane>

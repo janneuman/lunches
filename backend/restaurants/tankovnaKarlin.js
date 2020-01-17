@@ -1,9 +1,20 @@
-import cheerio from 'cheerio';
-import { fetchData } from '../helpers/index';
+import {
+  fetchZomatoDailyMenu,
+  getZomatoDailyMenuList,
+  menuNotFound,
+} from '../helpers/index';
 
 export const getTankovnaKarlin = async () => {
-  const url = 'https://www.zomato.com/widgets/daily_menu.php?entity_id=18057566';
-  const data = await fetchData(url);
-  console.log('AAAAA', cheerio.load(data)('#menu-preview'));
-  // return cheerio.load(data)('#menu-preview').html();
+  const resId = '18057566';
+  const dailyMenu = await fetchZomatoDailyMenu(resId);
+
+  if (
+    dailyMenu.status === 'success' &&
+    dailyMenu.daily_menus !== undefined &&
+    dailyMenu.daily_menus.length > 0
+  ) {
+    return getZomatoDailyMenuList(dailyMenu.daily_menus);
+  } else {
+    return menuNotFound();
+  }
 };

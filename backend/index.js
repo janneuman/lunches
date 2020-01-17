@@ -1,5 +1,6 @@
 import path from 'path';
 import express from 'express';
+import config from "./config";
 import {
   getEckoKantyna,
   getPivoKarlin,
@@ -9,10 +10,11 @@ import {
   getSpojkaKarlin,
   getGateKarlin,
   getGlobus,
+  getTankovnaKarlin,
 } from './restaurants';
 
 const app = express();
-const port = process.env.PORT || 3000;
+const port = config.serverPort;
 
 app.use(express.static(path.join(__dirname, '../frontend/build')))
 
@@ -52,6 +54,10 @@ app.get('/api/gate', async (req, res) => {
 
 app.get('/api/globus', async (req, res) => {
   res.send(await getGlobus());
+});
+
+app.get('/api/tankovna', async (req, res) => {
+  res.send(await getTankovnaKarlin());
 });
 
 app.get('*', function(request, response) {
