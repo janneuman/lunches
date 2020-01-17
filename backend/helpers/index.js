@@ -70,7 +70,7 @@ export const fetchZomatoRestaurantInfo = async (name) => {
 };
 
 export const getZomatoDailyMenuList = dailyMenus => {
-  const today = new Date(Date.now()).getDate();
+  const today = new Date().getDate();
   const finalMenu = [];
 
   dailyMenus.forEach(oneDayMenu => {
@@ -78,7 +78,7 @@ export const getZomatoDailyMenuList = dailyMenus => {
     const menuStartDay = new Date(menu.start_date).getDate();
 
     if (menuStartDay === today) {
-      return menu.dishes.map(dish => finalMenu.push({
+      menu.dishes.map(dish => finalMenu.push({
         name: dish.dish.name,
         price: dish.dish.price,
       }));

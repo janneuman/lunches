@@ -1,7 +1,8 @@
 import * as React from 'react';
 import './App.css';
-import { Pane, Tablist, Tab, Spinner } from 'evergreen-ui';
-import { StructuralMenu } from './StructuralMenu';
+import { Pane, Tablist, Tab } from 'evergreen-ui';
+import { Content } from './Content';
+
 import { useEffect } from 'react';
 
 const getMenu = async restaurant => {
@@ -97,7 +98,7 @@ function App() {
   }, [tabs, tabIndex]);
 
   return (
-    <Pane height={100} display="flex" flexDirection="column">
+    <Pane display="flex" flexDirection="column">
       <Tablist className="tablist">
         {tabs.map((tab, index) => (
           <Tab
@@ -125,13 +126,11 @@ function App() {
             display={index === tabIndex ? 'block' : 'none'}
             className={tab.className}
           >
-            {isLoading ? (
-              <Spinner />
-            ) : tab.json !== undefined ? (
-              <StructuralMenu menu={tab.content} />
-            ) : (
-              <div dangerouslySetInnerHTML={{ __html: tab.content }} />
-            )}
+            <Content
+              content={tab.content}
+              isLoading={isLoading}
+              isJsonFormat={tab.json}
+            />
           </Pane>
         ))}
       </Pane>
